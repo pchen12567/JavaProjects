@@ -14,13 +14,19 @@ public class MyClientSocket {
         Socket serverSocket;
 
         try {
+            // 根据IP和port获取和服务端连接的Socket对象
             serverSocket = new Socket("127.0.0.1", 8888);
 
+            //该线程用于向服务器端发送的消息
             ClientToServer clientToServer = new ClientToServer(serverSocket);
+
+            // 该线程用于接收服务器端发送的消息，并将该消息打印到控制台
             ClientAcceptServer clientAcceptServer = new ClientAcceptServer(serverSocket);
 
+            // 启动线程
             clientToServer.start();
             clientAcceptServer.start();
+
         } catch (IOException io) {
             io.printStackTrace();
         }
