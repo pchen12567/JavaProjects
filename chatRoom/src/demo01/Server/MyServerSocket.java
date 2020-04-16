@@ -24,11 +24,14 @@ public class MyServerSocket {
         try {
             // 创建一个服务器端socket服务
             serverSocket = new ServerSocket(8888);
+            System.out.println("服务器套接字已经创建成功");
 
             // 使用while死循环来模拟客户端一直启动
             while (true) {
+                System.out.println("等待客户端的连接...");
                 // 获取连接服务端的客户端 socket
                 // accept()方法：阻塞方法，也就是说调用accept方法后程序会停下来等待连接请求
+                // accept()方法会返回一个和客户端Socket对象相连的Socket对象
                 clientSocket = serverSocket.accept();
 
                 // 该线程用于接收客户端发送的消息，并将该消息打印到控制台
